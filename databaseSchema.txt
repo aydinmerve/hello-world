@@ -1,0 +1,65 @@
+
+Table Kullanicilar {
+  id int [pk, increment]
+  adi varchar
+  soyadi varchar
+  telefon varchar
+  eposta varchar
+  dogumTarihi date
+}
+
+Table Lokasyonlar {
+  id int [pk, increment]
+  lokasyon_adi varchar
+  sehir varchar
+  ilce varchar
+  cadde varchar
+  sokak varchar
+  Qr_kod varchar
+  koordinat varchar
+}
+
+Table Sesli_komut {
+  id int [pk, increment]
+  lokasyon_id int
+  ses_tip_id int
+  ses varchar
+  
+  }
+  
+
+Table isletmeler {
+  id int [pk, increment]
+  lokasyon_id int
+  kategori varchar
+  isletme_adi varchar
+  sehir varchar
+  ilce varchar
+  cadde varchar
+  sokak varchar
+  Qr_kod varchar
+  koordinat varchar
+}
+
+
+Table isl_Sesli_komut {
+  id int [pk, increment]
+  isletme_id int
+  ses varchar
+  ses_tip_id varchar
+  }
+  
+Table ses_tipleri {
+  id int [pk, increment]
+  ses_tipi varchar
+  }
+
+Ref: "Sesli_komut"."lokasyon_id" < "Lokasyonlar"."id"
+
+Ref: "isletmeler"."lokasyon_id" < "Lokasyonlar"."id"
+
+Ref: "isl_Sesli_komut"."isletme_id" < "isletmeler"."id"
+
+Ref: "isl_Sesli_komut"."ses_tip_id" < "ses_tipleri"."id"
+
+Ref: "Sesli_komut"."ses_tip_id" < "ses_tipleri"."id"
