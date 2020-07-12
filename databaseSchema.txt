@@ -1,4 +1,6 @@
 
+Database Tabloları.
+
 Table Kullanicilar {
   id int [pk, increment]
   adi varchar
